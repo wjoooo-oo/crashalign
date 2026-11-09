@@ -1,0 +1,35 @@
+{
+  "seed": 42,
+  "strategy": "pre13_post7",
+  "pool": {
+    "gold": 200,
+    "silver": 1827,
+    "total": 2027
+  },
+  "split_requested": {
+    "train": 1000,
+    "val": 400,
+    "test": 600
+  },
+  "split_written": {
+    "train": 1000,
+    "val": 400,
+    "test": 600,
+    "train_gold": 95,
+    "held_out": 27
+  },
+  "source_in_split": {
+    "train": {
+      "gold": 95,
+      "silver": 905
+    },
+    "val": {
+      "silver": 361,
+      "gold": 39
+    },
+    "test": {
+      "silver": 540,
+      "gold": 60
+    }
+  }
+}

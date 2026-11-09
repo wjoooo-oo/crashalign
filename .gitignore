@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Model weights & large caches (use GitHub Releases)
+checkpoints/
+!checkpoints/.gitkeep
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+cache_emb*/
+frames_cache*/
+*.mp4
+*.avi
+*.mov
+videos/
+.cache/
+
+# Logs / outputs
+*.log
+logs/
+wandb/
+outputs/
+viz*/
+tensorboard*/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
