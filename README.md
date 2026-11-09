@@ -3,20 +3,9 @@
 Phase-aware, task-aligned traffic crash understanding from roadside video.
 按论文 *Phase-Aware and Task-Aligned Traffic Crash Understanding from Surveillance Videos* 整理的代码包：只保留五模块主流程，不含中途探测实验。
 
-```
-Video
-  │
-  ▼
-Stage I
-  Module 1  Crash recognition     VideoMAE window head, video score = max over windows
-  Module 2  Onset localization    VideoMAE → BiGRU → 4-phase head, then a frozen phase-conditioned T head
-  │  onset time
-  ▼
-Stage II
-  Module 1  Spatial localization  Qwen3.5-27B QLoRA (merger + LM + last 4 ViT blocks)
-  Module 2  Crash type + vehicles RT-DETR + ByteTrack + geometry / scene rules
-  Module 3  Crash report          separate Qwen3.5-27B QLoRA on language layers only
-```
+![Figure 1. Overview of the CrashAlign framework.](docs/figures/fig1_overview.png)
+
+Stage I 先判断有没有碰撞，再估计 onset。Stage II 用这个时刻做空间定位、碰撞类型和文字报告。
 
 | Paper module | Code | Source experiment |
 |---|---|---|
@@ -29,10 +18,23 @@ Stage II
 
 Earlier package `1029_crashalign` is unchanged. It mixed zero-shot spatial scripts and internal ablations into Stage II, and it did not include the cumulative model in `0722_cumcrash`.
 
-Paper figures and result tables, cropped for the README, are in [`1109_PAPER_FIGURES.md`](1109_PAPER_FIGURES.md).
-论文图和结果表已裁好，写 README 时看 [`1109_PAPER_FIGURES.md`](1109_PAPER_FIGURES.md)。
+其余图和三张结果表在 [`1109_PAPER_FIGURES.md`](1109_PAPER_FIGURES.md)。
+
+## Examples
+
+黄框是估计的 onset 帧，黄点是碰撞点。上例是夜间信号交叉口的 T-bone，下例是隧道里的追尾。
+
+![Figure 5. Examples of the crash detection and understanding pipeline.](docs/figures/fig5_pipeline_examples.png)
 
 ## What this package keeps
+
+Stage I 的训练流程：Module 1 对每个 2 秒窗口打分，视频分数取最大窗口；Module 2 先学四个阶段，再冻结阶段头，用 Gaussian MSE 回归 onset。
+
+![Figure 2. Stage I training pipeline.](docs/figures/fig2_stage1_training.png)
+
+阶段概率从 normal 走到 post-crash，估计 onset 落在进入 impact 的附近。
+
+![Figure 3. Visualization of phase-aware temporal onset localization.](docs/figures/fig3_phase_onset.png)
 
 Stage I recognition is a VideoMAE window encoder plus a clip score. `train_videomae_accident.py` scores a clip by the maximum window probability. `0925_partial_finetune_encoder.py` is the top-block fine-tune used before that encoder is plugged into the temporal head. Matched crash / non-crash clips (same source video, duration gap under 1 s, cut 2 s before onset) are built by `0726_build_accident_matched_split.py`.
 
