@@ -1,8 +1,6 @@
 # Stage II Module 3 — crash understanding report
 
-A second Qwen3.5-27B QLoRA adapter. The vision tower stays frozen; LoRA is on the language layers only. This adapter is not the spatial adapter in `../stage2_spatial_vlora/`.
-
-第二套 QLoRA，只改语言模型层，视觉编码器冻结。和空间定位适配器分开训练。
+A second Qwen3.5-27B QLoRA adapter. The vision tower stays frozen; LoRA is on the language layers only. This adapter is trained separately from the spatial adapter in `../stage2_spatial_vlora/`.
 
 Training schedule in `lora_finetune/run_train.sh`:
 

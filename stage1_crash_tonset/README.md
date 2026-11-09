@@ -1,7 +1,6 @@
 # Stage I — crash recognition and onset localization
 
-Paper Stage I. Library files (`model.py`, `labels.py`, `losses.py`, `sampling.py`, `t_stage.py`) are shared by both modules.
-论文 Stage I。下面两个模块共用同一套 VideoMAE 窗口特征。
+Paper Stage I. Library files (`model.py`, `labels.py`, `losses.py`, `sampling.py`, `t_stage.py`) are shared by both modules. Both modules use the same VideoMAE window features.
 
 ## Module 1 — crash recognition
 

@@ -2,15 +2,13 @@
 
 Control adapter: vision tower frozen, LoRA on the language projections. The paper's spatial module also adapts the merger and the last four vision blocks; that code is `../stage2_spatial_vlora/`.
 
-对照适配器：视觉塔冻结，只训练语言层 LoRA。论文设定还训练 merger 和最后 4 个视觉 block，见 `../stage2_spatial_vlora/`。
-
-# 0914_ Spatial Grounding QLoRA / 空间定位独立 LoRA
+# 0914_ Spatial Grounding QLoRA
 
 > Separate QLoRA adapter for **spatial collision localization**, independent from
 > the crash-understanding LoRA in `0609crashexplanation/lora_finetune/`.
-> 与事故语义理解 LoRA **分离**的空间定位适配器；预训练骨干与视觉编码器保持冻结。
+> The pretrained backbone and the vision encoder stay frozen.
 
-## Design / 设计
+## Design
 
 | Item | Choice |
 |------|--------|

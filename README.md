@@ -1,11 +1,11 @@
 # CrashAlign
 
 Phase-aware, task-aligned traffic crash understanding from roadside video.
-按论文 *Phase-Aware and Task-Aligned Traffic Crash Understanding from Surveillance Videos* 整理的代码包：只保留五模块主流程，不含中途探测实验。
+This repository keeps the five-module pipeline from *Phase-Aware and Task-Aligned Traffic Crash Understanding from Surveillance Videos*. Intermediate experiments are not included.
 
 ![Figure 1. Overview of the CrashAlign framework.](docs/figures/fig1_overview.png)
 
-Stage I 先判断有没有碰撞，再估计 onset。Stage II 用这个时刻做空间定位、碰撞类型和文字报告。
+Stage I decides whether a crash occurs and estimates its onset. Stage II uses that time for spatial localization, collision type, and a written report.
 
 | Paper module | Code | Source experiment |
 |---|---|---|
@@ -18,21 +18,21 @@ Stage I 先判断有没有碰撞，再估计 onset。Stage II 用这个时刻做
 
 Earlier package `1029_crashalign` is unchanged. It mixed zero-shot spatial scripts and internal ablations into Stage II, and it did not include the cumulative model in `0722_cumcrash`.
 
-其余图和三张结果表在 [`1109_PAPER_FIGURES.md`](1109_PAPER_FIGURES.md)。
+The remaining figures and the three result tables are in [`1109_PAPER_FIGURES.md`](1109_PAPER_FIGURES.md).
 
 ## Examples
 
-黄框是估计的 onset 帧，黄点是碰撞点。上例是夜间信号交叉口的 T-bone，下例是隧道里的追尾。
+The yellow box is the estimated onset frame. The yellow marker is the collision point. The first example is a nighttime T-bone at a signalized intersection. The second is a rear-end crash in a tunnel.
 
 ![Figure 5. Examples of the crash detection and understanding pipeline.](docs/figures/fig5_pipeline_examples.png)
 
 ## What this package keeps
 
-Stage I 的训练流程：Module 1 对每个 2 秒窗口打分，视频分数取最大窗口；Module 2 先学四个阶段，再冻结阶段头，用 Gaussian MSE 回归 onset。
+Stage I training: Module 1 scores every 2-second window and takes the maximum as the video score. Module 2 learns four phases, freezes that head, then regresses onset with a Gaussian MSE.
 
 ![Figure 2. Stage I training pipeline.](docs/figures/fig2_stage1_training.png)
 
-阶段概率从 normal 走到 post-crash，估计 onset 落在进入 impact 的附近。
+Phase probability moves from normal through post-crash. The estimated onset sits near the transition into impact.
 
 ![Figure 3. Visualization of phase-aware temporal onset localization.](docs/figures/fig3_phase_onset.png)
 

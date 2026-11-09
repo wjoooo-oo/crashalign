@@ -1,4 +1,4 @@
-# 0625_ Qwen3.5 Crash-Report LoRA Fine-tuning / 事故报告 LoRA 微调
+# 0625_ Qwen3.5 Crash-Report LoRA Fine-tuning
 
 > Last updated: 2025-06-25
 
@@ -9,7 +9,7 @@ Two-stage pipeline on ACCIDENT (~2000 clips):
 
 ---
 
-## Data split / 数据划分（5:2:3）
+## Data split (5:2:3)
 
 Gold (200) + Silver (1827) pooled, shuffled (seed=42):
 
@@ -25,7 +25,7 @@ Gold (200) + Silver (1827) pooled, shuffled (seed=42):
 
 ---
 
-## Frame strategy / 抽帧策略
+## Frame strategy
 
 **`pre13_post7`** — 20 frames: 13 pre-onset + 7 post-onset (no t=0 frame).
 
@@ -41,7 +41,7 @@ python prepare_test_sub5_frames.py
 
 ---
 
-## Training / 训练
+## Training
 
 ```
 Stage 1: train.jsonl (1000 mixed)      @ lr 1e-4, 1 epoch  → runs/stage1_mixed
@@ -169,7 +169,7 @@ Results: `runs/stage2_gold_refine/eval_test_sub5_onset.json` (pending after infe
 
 ---
 
-## Layout / 目录
+## Layout
 
 ```
 lora_finetune/

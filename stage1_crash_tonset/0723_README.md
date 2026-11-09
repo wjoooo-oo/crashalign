@@ -2,7 +2,6 @@
 
 Started 2026-07-23. **Read `results/0729_stage1_summary.md` first** — it contains
 every Stage-1 result, all ablations, and the reasoning behind the protocol choices.
-先阅读 results/0729_stage1_summary.md，其中汇总了全部 Stage-1 结果与消融实验。
 
 ## Results in one line
 
@@ -27,9 +26,6 @@ Use the **ACCIDENT matched protocol**, where positive and negative clips come fr
 the *same source video* at fixed length. It reports 0.60 rather than 0.99, and
 0.60 is the real number. Evidence: `results/dataset_confusion/`,
 `results/dataset_confound/`, `results/dataset_gap/`, `results/shortcut_controls/`.
-
-绝不要用「正负样本跨数据集」或「时长系统性不同」的数据池评测检测；
-必须使用同源视频的 matched 协议。
 
 ## Model
 

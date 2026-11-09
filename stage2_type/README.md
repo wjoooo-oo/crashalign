@@ -1,8 +1,6 @@
 # Stage II Module 2 — crash type and involved vehicles
 
-RT-DETR tracks vehicles with ByteTrack on a short window around the onset, then a geometry rule plus a scene-layout rerank assigns one of five types: rear-end, head-on, T-bone, sideswipe, single-vehicle.
-
-在 onset 附近的短窗口上用 RT-DETR + ByteTrack 得到轨迹，再由几何规则和场景重排得到碰撞类型。论文没有使用 CoTracker，因此对应脚本未收入。
+RT-DETR tracks vehicles with ByteTrack on a short window around the onset, then a geometry rule plus a scene-layout rerank assigns one of five types: rear-end, head-on, T-bone, sideswipe, single-vehicle. The paper does not use CoTracker, so that runner is not included.
 
 ```bash
 python run_intersection_rtdetrxl_bytetrack.py

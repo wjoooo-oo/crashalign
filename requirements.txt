@@ -1,5 +1,4 @@
 # CrashAlign paper pipeline
-# 论文主流程依赖
 
 torch>=2.0.0
 torchvision>=0.15.0

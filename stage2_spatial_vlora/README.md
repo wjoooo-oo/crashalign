@@ -1,15 +1,12 @@
 # Stage II Module 1 — spatial QLoRA (paper setting)
 
-This is the spatial module in the paper: Qwen3.5-27B, 4-bit QLoRA, \(r=8\), \(\alpha=16\), one GT onset frame, answer `x y` on a 0–1000 grid.
+This is the spatial module in the paper: Qwen3.5-27B, 4-bit QLoRA, \(r=8\), \(\alpha=16\), one GT onset frame, answer `x y` on a 0–1000 grid. `run_vision_lora.sh` adapts the merger, the language layers, and the last four vision blocks. `run_main.sh` freezes the vision blocks and is the control.
 
-论文中的空间定位模块。`run_vision_lora.sh` 在 merger、语言模型层和最后 4 个视觉 block 上加 LoRA。`run_main.sh` 冻结视觉 block，只作对照。
-
-The notes below are the original 200-GT holdout log. They are not a second method.
+The notes below are the original 200-GT holdout log. They are not a second method. The paper reports the spatial score on the recognition-gated test clips, not this 40-clip holdout.
 
 # 0917_ Spatial VLoRA (original log)
 
-> Holdout log from the 200-GT split. The paper reports spatial score on the recognition-gated test clips, not this 40-clip holdout.
-> 下面是 200-GT 小划分上的原始记录。论文里的 S 是识别门控后的测试集，不是这 40 条 holdout。
+> Holdout log from the 200-GT split.
 
 ## Setup
 
